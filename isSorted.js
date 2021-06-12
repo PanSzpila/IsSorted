@@ -8,67 +8,28 @@ isSorted([1, 1, 1]) -> true
 isSorted([1, 2, 1]) -> false
 */
 
-const array = [1, 1, 1, 1];
-
 function isSorted(array) {
-  let isSorted = true
+  let isSorted = false;
+  let isIncreasing = true;
+  let isDecreasing = true;
 
-  for (let i = 0; i < array.length; i++) {
-    if (isNaN(array[i])) {
-      return console.log(i + 1 + "-th element of array is not a number");
+  for (let i = 1; i < array.length; i++) {
+    if (!(array[i - 1] === array[i] || array[i - 1] < array[i])) {
+      isIncreasing = false;
     }
   }
 
   for (let i = 1; i < array.length; i++) {
-    if (array[i - 1] === array[i]) {
-      console.log(
-        i + "-th element of array is equal to " + (i - 1) + "-th element"
-      );
-    }
-
-    if (array[i - 1] < array[i]) {
-      console.log(
-        i + "-th element of array is greater than " + (i - 1) + "-th element"
-      );
-      return increasingTest(i);
-    }
-    if (array[i - 1] > array[i]) {
-      console.log(
-        i + "-th element of array is lesser than " + (i - 1) + "-th element"
-      );
-      return decreasingTest(i);      
+    if (!(array[i - 1] === array[i] || array[i - 1] > array[i])) {
+      isDecreasing = false;
     }
   }
 
-  function increasingTest(i) {
-    for (i; i < array.length; i++) {
-      if (array[i - 1] > array[i]) {
-        determineUnsorted();
-      }
-      determineSorted(i);
-    }
+  if (isIncreasing === true || isDecreasing === true) {
+    isSorted = true;
   }
 
-  function decreasingTest(i) {
-    for (i; i < array.length; i++) {
-      if (array[i - 1] < array[i]) {
-        determineUnsorted();
-      }
-      determineSorted(i);
-    }
-  }
-
-  function determineSorted(i) {
-    if (i === array.length - 1 && isSorted === true) {
-      console.log("Array is sorted");
-    }
-  }
-  function determineUnsorted() {
-    isSorted = false;
-    return console.log("Array is unsorted");
-    
-  }
-  console.log(isSorted)
+  console.log(isSorted);
 }
 
-isSorted(array)
+isSorted([1, 8, 3, 4]);
