@@ -8,10 +8,10 @@ isSorted([1, 1, 1]) -> true
 isSorted([1, 2, 1]) -> false
 */
 
-const array = [1, 2, 3, 2];
+const array = [1, 1, 1, 1];
 
-function isSoreted(array) {
-  let isSorted = true;
+function isSorted(array) {
+  let isSorted = true
 
   for (let i = 0; i < array.length; i++) {
     if (isNaN(array[i])) {
@@ -68,6 +68,7 @@ function isSoreted(array) {
     return console.log("Array is unsorted");
     
   }
+  console.log(isSorted)
 }
 
-isSoreted(array);
+isSorted(array)
